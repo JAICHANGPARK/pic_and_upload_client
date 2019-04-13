@@ -23,13 +23,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mIpAddress ?: setIP()
+        mIpAddress ?: setIp()
         mSharedData.isConnected = false
         ProcessTask(1, 50).start()
         ProcessTask(50, 100).start()
         ProcessTask(100, 150).start()
-        ProcessTask(150, 200).start()
-        ProcessTask(200, 256).start()
+
 
 
     }
@@ -37,24 +36,23 @@ class MainActivity : AppCompatActivity() {
     private inner class ProcessTask(var start: Int, var end: Int) : Thread() {
 
         override fun run() {
-
+            var serverSocket: ServerSocket? = null
             try {
                 var hostname: String? = null
                 var connectSocket: Socket? = null
                 var socketAddress: SocketAddress
                 for (i in start until end) {
 
-                    if (mSharedData.isConnected) {
-                        break
-                    }
+                    if (mSharedData.isConnected)  break
+
                     try {
-                        hostname = mPartialAp[0] + "." + mPartialAp[1] + "." + mPartialAp[2] + "."
-                        +i
+                        hostname = mPartialAp[0] + "." + mPartialAp[1] + "." + mPartialAp[2] + "."+i
+                        Log.e(Constants.TAG, hostname )
                         socketAddress = InetSocketAddress(hostname, Constants.CONNECT_PORT)
                         Log.e(Constants.TAG, hostname + " : 서버 연결 시도 ...")
                         try {
                             connectSocket = Socket()
-                            connectSocket.connect(socketAddress, mTimeout)
+                            connectSocket?.connect(socketAddress, mTimeout)
                         } catch (e: SocketTimeoutException) {
                             continue
                         }
@@ -71,24 +69,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setIP() {
-        val wm = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
-        val wifiInfo = wm.connectionInfo
-        val ip = wifiInfo.ipAddress
-        Log.e(this@MainActivity::class.java.name, ip.toString())
 
+    private fun setIp() {
+        val wm = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+
+        val wifiInfo = wm?.connectionInfo
+        val ip = wifiInfo.ipAddress
         mIpAddress = Formatter.formatIpAddress(ip)
         val st = StringTokenizer(mIpAddress, ".")
 
-        for(i in mPartialAp.indices){
+        for (i in mPartialAp.indices) {
             mPartialAp[i] = st.nextToken()
         }
 
-        Log.e(Constants.TAG, mIpAddress) // phone ip
-        Log.e(Constants.TAG, mPartialAp[0] + "." + mPartialAp[1] + "." + mPartialAp[2]) // ap ip
-
-
+        Log.d(Constants.TAG, mIpAddress) // phone ip
+        Log.d(Constants.TAG, mPartialAp[0] + "." + mPartialAp[1] + "." + mPartialAp[2]) // ap ip
     }
+
 
 
 }
