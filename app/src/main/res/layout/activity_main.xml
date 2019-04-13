@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".LoginActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_weight="3"
+        android:text="PC와 연결이 필요합니다."
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:id="@+id/connect_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+    >
+        <Button
+            android:padding="15dp"
+            android:id="@+id/select_pc"
+            android:text="PC 선택"
+            android:textSize="45dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"/>
 
-        <TextView
-            android:gravity="center"
-            android:text="@string/login_title"
-            android:textSize="60sp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:text="@string/login_subTitle"
-            android:textColor="#ff0000"
-            android:textStyle="bold"
-            android:textSize="38sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <Button
+            android:padding="15dp"
+            android:id="@+id/select_picture"
+            android:text="사진 선택"
+            android:textSize="45dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"/>
+
 
     </LinearLayout>
 
-    <TextView
-        android:gravity="center"
-        android:textSize="38sp"
-        android:textStyle="bold"
-        android:id="@+id/wifi_state_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 </LinearLayout>
+
+
+
+
+
