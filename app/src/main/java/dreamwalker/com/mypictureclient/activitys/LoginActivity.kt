@@ -1,4 +1,4 @@
-package dreamwalker.com.mypictureclient
+package dreamwalker.com.mypictureclient.activitys
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Message
 import android.os.Process
 import androidx.appcompat.app.AlertDialog
+import dreamwalker.com.mypictureclient.R
 import kotlinx.android.synthetic.main.activity_login.*
 import java.lang.Exception
 
