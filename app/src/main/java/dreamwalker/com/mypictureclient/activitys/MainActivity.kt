@@ -1,9 +1,16 @@
 package dreamwalker.com.mypictureclient.activitys
 
+import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.graphics.Color
 import android.net.wifi.WifiManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.text.format.Formatter
 import android.util.Log
 import androidx.core.content.getSystemService
@@ -24,7 +31,13 @@ class MainActivity : AppCompatActivity() {
     private var mServerIP: String = ""
     private val mPCs = ArrayList<String>()
     private var mSyncDate: String? = null
-    internal var mSharedData = SharedData.instant
+    internal var mSharedData = SharedData.instance
+
+
+    private var mDialog: AlertDialog? = null
+    internal var mSearchDialogHandler: SearchDialogHandler? = null
+    private var mSelectedModeIndex: Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +45,28 @@ class MainActivity : AppCompatActivity() {
 
         mIpAddress ?: setIp()
         mSharedData.isConnected = false
+        mSearchDialogHandler = SearchDialogHandler()
+
         ProcessTask(1, 50).start()
         ProcessTask(50, 100).start()
         ProcessTask(100, 150).start()
         ProcessTask(150, 200).start()
         ProcessTask(200, 256).start()
+        mSearchDialogHandler?.sendEmptyMessage(0)
 
+    }
 
+    override fun onResume() {
+        super.onResume()
+        mIpAddress?: setIp()
+        if (!mSharedData.isConnected) {
+            mPCs.remove(mServerIP)
+        }
+        setUi()
+        SharedData.instance.allModeFileCount = 0
+        SharedData.instance.allModeTotalFileCount = 0
+        SharedData.instance.selectedModeFileCount = 0
+        SharedData.instance.selectedModeTotalFileCount = 0
     }
 
     private inner class ProcessTask(var start: Int, var end: Int) : Thread() {
@@ -96,13 +124,21 @@ class MainActivity : AppCompatActivity() {
                     dis.close()
                     receiveSocket.close()
                     serverSocket.close()
-
-                    if(mSharedData.isConnected){
-                        connect_state.text ="PC를 선택해 주세요"
+                    mSearchDialogHandler?.sendEmptyMessage(1)
+                    if (mSharedData.isConnected) {
+                        connect_state.text = "PC를 선택해 주세요"
                     }
 
                 }
             } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            synchronized(this) {
+                mSharedData.threadCount = mSharedData.threadCount + 1
+                if (mSharedData.threadCount == 5) {
+                    mSearchDialogHandler?.sendEmptyMessage(1)
+                    mSharedData.threadCount = 0
+                }
             }
         }
     }
@@ -123,8 +159,95 @@ class MainActivity : AppCompatActivity() {
         Log.d(Constants.TAG, mPartialAp[0] + "." + mPartialAp[1] + "." + mPartialAp[2]) // ap ip
     }
 
+    private fun setUi() {
+        connect_state.text = "PC와 연결이 필요합니다."
+        select_pc.setOnClickListener { selectPc() }
 
+        select_picture.setOnClickListener { selectMode() }
+        select_picture.setTextColor(Color.GRAY)
+        select_picture.isClickable = false
+
+        search_pc.setOnClickListener {
+            mSharedData.isConnected = false
+            mSharedData.threadCount = 0
+            ProcessTask(1, 50).start()
+            ProcessTask(50, 100).start()
+            ProcessTask(100, 150).start()
+            ProcessTask(150, 200).start()
+            ProcessTask(200, 256).start()
+            mSearchDialogHandler?.sendEmptyMessage(0)
+        }
+
+        @Suppress("DEPRECATION")
+        mDialog = ProgressDialog(this@MainActivity, R.style.CustomDialog)
+        mDialog?.setMessage("Server PC 검색중")
+        mDialog?.setCancelable(false)
+    }
+    private fun selectPc() {
+        val pcList = mPCs.toTypedArray<CharSequence>()
+        val alt_bld = AlertDialog.Builder(this)
+        alt_bld.setTitle("PC를 선택해주세요.")
+        alt_bld.setSingleChoiceItems(
+            pcList, -1
+        ) { dialog, item ->
+            connect_state.text = "연결 완료!!"
+            select_picture.isClickable = true
+            select_picture.setTextColor(Color.BLACK)
+            mServerIP = pcList[item].toString()
+            dialog.dismiss()
+        }
+        val alert = alt_bld.create()
+        alert.show()
+    }
+
+    private fun selectMode() {
+        val modes = arrayOf<CharSequence>("자동", "선택")
+        val alt_bld = AlertDialog.Builder(this)
+        alt_bld.setTitle("전송할 방법을 선택해주세요.")
+        alt_bld.setSingleChoiceItems(modes, 0,
+            object : DialogInterface.OnClickListener {
+                override fun onClick(dialog: DialogInterface, item: Int) {
+                    mSelectedModeIndex = item
+                }
+            }).setPositiveButton("확인",
+            object : DialogInterface.OnClickListener {
+                override fun onClick(dialog: DialogInterface, which: Int) {
+                    if (mSelectedModeIndex == 0) {
+                        val intent = Intent()
+                        intent.putExtra(Constants.IP, mServerIP)
+                        intent.putExtra(Constants.DATE, mSyncDate)
+                        intent.setClass(applicationContext, SendAutoItemActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent()
+                        intent.putExtra(Constants.IP, mServerIP)
+//                        intent.setClass(applicationContext, SendSelectedItemActivity::class.java)
+//                        startActivity(intent)
+                    }
+                }
+            })
+        val alert = alt_bld.create()
+        alert.show()
+    }
+
+    internal inner class SearchDialogHandler : Handler() {
+        override fun handleMessage(msg: Message) {
+            if (msg.what == 0) {
+                mDialog?.show()
+            } else if (msg.what == 1) {
+                mDialog?.let {
+                    if (it.isShowing ?: true) {
+                        it.dismiss()
+                    }
+                }
+            }
+        }
+
+    }
 }
+
+
+
 
 
 

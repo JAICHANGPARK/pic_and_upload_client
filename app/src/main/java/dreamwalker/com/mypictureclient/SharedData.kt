@@ -1,22 +1,27 @@
 package dreamwalker.com.mypictureclient
 
 import android.content.Intent
+import java.util.ArrayList
 
 class SharedData {
 
     val allModeSenderIntent = Intent()
     val allModeProgressServiceIntent = Intent()
-    var isConnected : Boolean = false
+    var isConnected: Boolean = false
+    var threadCount: Int = 0
+
     val selectedModeSenderIntent = Intent()
     val selectedModeProgressServiceIntent = Intent()
-    var allModeFileCount : Int = 0
-    var allModeTotalFileCount : Int = 0
+    var allModeFileCount: Int = 0
+    var allModeTotalFileCount: Int = 0
 
-    var selectedModeFileCount : Int = 0
-    var selectedModeTotalFileCount : Int = 0
+    var selectedModeFileCount: Int = 0
+    var selectedModeTotalFileCount: Int = 0
 
-    companion object{
-        val instant = SharedData()
+//    var selectedImageList = ArrayList<SelectedImageData>()
+
+    companion object {
+        val instance = SharedData()
     }
 }
 
