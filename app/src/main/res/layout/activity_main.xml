@@ -42,6 +42,13 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"/>
 
+        <Button
+            android:padding="15dp"
+            android:id="@+id/search_pc"
+            android:text="PC 탐색"
+            android:textSize="45dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
