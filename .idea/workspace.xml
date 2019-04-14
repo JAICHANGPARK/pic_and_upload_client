@@ -11,6 +11,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de4e61c9-9874-4331-8df3-b39776dda294" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/model/AutoImageData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/services/SendAutoItemService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/activitys/SendAutoItemActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/activitys/SendAutoItemActivity.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,8 +87,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="4" />
-          <entry key="kt" value="9" />
+          <entry key="java" value="5" />
+          <entry key="kt" value="12" />
           <entry key="png" value="7" />
           <entry key="xml" value="13" />
         </counts>
@@ -87,20 +96,20 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="7" />
-          <entry key="JAVA" value="4" />
-          <entry key="Kotlin" value="9" />
+          <entry key="JAVA" value="5" />
+          <entry key="Kotlin" value="12" />
           <entry key="XML" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="kt" value="4150" />
+          <entry key="kt" value="4547" />
           <entry key="xml" value="234" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Kotlin" value="4150" />
+          <entry key="Kotlin" value="4547" />
           <entry key="XML" value="234" />
         </counts>
       </usages-collector>
@@ -108,15 +117,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/activitys/MainActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-451">
-              <caret line="219" column="45" lean-forward="true" selection-start-line="219" selection-start-column="45" selection-end-line="219" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/device-2019-04-13-223922.png">
           <provider selected="true" editor-type-id="images" />
@@ -133,13 +133,59 @@
           <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/activitys/SendAutoItemActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="100" column="35" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
+            <state relative-caret-position="484">
+              <caret line="134" column="32" lean-forward="true" selection-start-line="134" selection-start-column="32" selection-end-line="134" selection-end-column="32" />
               <folding>
-                <element signature="e#51#467#0" expanded="true" />
+                <element signature="e#51#620#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/SharedData.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+              <folding>
+                <element signature="e#41#97#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/model/AutoImageData.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/services/SendAutoItemService.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="733">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
+              <folding>
+                <element signature="e#50#194#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/app/Service.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="592" column="22" selection-start-line="592" selection-start-column="22" selection-end-line="592" selection-end-column="22" />
+              <folding>
+                <element signature="e#28394#28395#0" expanded="true" />
+                <element signature="e#28422#28423#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,7 +209,7 @@
           <provider editor-type-id="android-manifest" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="217">
-              <caret line="7" column="78" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
+              <caret line="7" column="77" selection-start-line="7" selection-start-column="77" selection-end-line="7" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -2577,15 +2623,17 @@
         <option value="$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/SharedData.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/activitys/MainActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/model/AutoImageData.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/activitys/SendAutoItemActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/services/SendAutoItemService.kt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="211" />
-    <option name="y" value="16" />
-    <option name="width" value="1240" />
-    <option name="height" value="1378" />
+    <option name="x" value="699" />
+    <option name="y" value="53" />
+    <option name="width" value="1686" />
+    <option name="height" value="1379" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -2618,6 +2666,13 @@
               <item name="mypictureclient" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="activitys" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="pic_and_upload_client" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="mypictureclient" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -2644,6 +2699,9 @@
     </key>
     <key name="android.template.packageName">
       <recent name="dreamwalker.com.mypictureclient.activitys" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="dreamwalker.com.mypictureclient.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\HOME613\Documents\GitHub\pic_and_upload_client\app\src\main\res\layout" />
@@ -2736,11 +2794,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="211" y="16" width="1240" height="1378" extended-state="0" />
+    <frame x="699" y="53" width="1686" height="1379" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21034776" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.15261538" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -2748,15 +2806,15 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.4288039" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.5231896" />
       <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" />
       <window_info anchor="bottom" id="Debug" order="4" />
       <window_info anchor="bottom" id="Terminal" order="5" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Build" order="9" visible="true" weight="0.29943043" />
+      <window_info anchor="bottom" id="Build" order="9" visible="true" weight="0.299187" />
       <window_info anchor="bottom" id="Find" order="10" weight="0.3295362" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -2840,20 +2898,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/SharedData.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/device-2019-04-13-214809.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/activitys/MainActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-451">
-          <caret line="219" column="45" lean-forward="true" selection-start-line="219" selection-start-column="45" selection-end-line="219" selection-end-column="45" />
+          <caret line="219" column="45" selection-start-line="219" selection-start-column="45" selection-end-line="219" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -2870,7 +2921,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
-          <caret line="7" column="78" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
+          <caret line="7" column="77" selection-start-line="7" selection-start-column="77" selection-end-line="7" selection-end-column="77" />
         </state>
       </provider>
       <provider editor-type-id="android-manifest" />
@@ -2886,12 +2937,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/SharedData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding>
+            <element signature="e#41#97#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/model/AutoImageData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/activitys/SendAutoItemActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="100" column="35" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
+        <state relative-caret-position="484">
+          <caret line="134" column="32" lean-forward="true" selection-start-line="134" selection-start-column="32" selection-end-line="134" selection-end-column="32" />
           <folding>
-            <element signature="e#51#467#0" expanded="true" />
+            <element signature="e#51#620#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/app/Service.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="592" column="22" selection-start-line="592" selection-start-column="22" selection-end-line="592" selection-end-column="22" />
+          <folding>
+            <element signature="e#28394#28395#0" expanded="true" />
+            <element signature="e#28422#28423#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/dreamwalker/com/mypictureclient/services/SendAutoItemService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="733">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="e#50#194#0" expanded="true" />
           </folding>
         </state>
       </provider>

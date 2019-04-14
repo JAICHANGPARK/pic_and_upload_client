@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import dreamwalker.com.mypictureclient.R
 import dreamwalker.com.mypictureclient.SharedData
 import dreamwalker.com.mypictureclient.app_const.Constants
+import dreamwalker.com.mypictureclient.services.SendAutoItemService
 
 class SendAutoItemActivity : AppCompatActivity() {
 
@@ -129,5 +130,13 @@ class SendAutoItemActivity : AppCompatActivity() {
 
     private fun isValidDate(lastDate: String, date: String): Boolean {
         return lastDate.compareTo(date) <= 0
+    }
+
+    private fun startSendService(){
+        mSharedData.allModeSenderIntent.putExtra(Constants.LAST_DATE, mLastDate)
+        mSharedData.allModeSenderIntent.putExtra(Constants.LAST_DATE, mLastDate)
+        mSharedData.allModeSenderIntent.putExtra(Constants.SERVER_IP, mServerIP)
+        mSharedData.allModeSenderIntent.setClass(this, SendAutoItemService::class.java)
+        startService(mSharedData.allModeSenderIntent)
     }
 }
