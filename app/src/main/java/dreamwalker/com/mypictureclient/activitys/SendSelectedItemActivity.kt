@@ -25,7 +25,18 @@ import java.util.ArrayList
 
 class SendSelectedItemActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val adapter = parent?.adapter as ImageAdapter
+        val rowData = adapter.getItem(position) as SelectedImageData
+        val curCheckState = rowData.mCheckedState
+
+        rowData.mCheckedState = !curCheckState
+
+        if (rowData.mCheckedState) {
+            mAllFileList.add(rowData)
+        } else {
+            mAllFileList.remove(rowData);
+        }
+        adapter.notifyDataSetChanged()
     }
 
     private val mSharedData = SharedData.instance
@@ -41,7 +52,6 @@ class SendSelectedItemActivity : AppCompatActivity(), AdapterView.OnItemClickLis
 
     private lateinit var mProgressIntent: Intent
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_send_selected_item)
@@ -51,7 +61,11 @@ class SendSelectedItemActivity : AppCompatActivity(), AdapterView.OnItemClickLis
         } else {
             init()
         }
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mFindImageList.cancel(true)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -79,6 +93,7 @@ class SendSelectedItemActivity : AppCompatActivity(), AdapterView.OnItemClickLis
             }
         }
     }
+
     private fun init() {
         var serverIp = intent.getStringExtra(Constants.IP)
         mFindImageList = FindImageList()
@@ -111,7 +126,7 @@ class SendSelectedItemActivity : AppCompatActivity(), AdapterView.OnItemClickLis
                     ) { dialog, whichButton ->
                         val dirName = input.text.toString()
                         mSharedData.isConnected = false
-//                        startSendService(dirName, serverIp)
+                        startSendService(dirName, serverIp)
                         finish()
                     }
                     alert.setNegativeButton("취소",
@@ -135,6 +150,23 @@ class SendSelectedItemActivity : AppCompatActivity(), AdapterView.OnItemClickLis
             }
         })
     }
+
+    private fun startSendService(dirName: String, serverIp: String) {
+        mSharedData.selectedModeSenderIntent.putExtra(Constants.SERVER_IP, serverIp)
+        mSharedData.selectedModeSenderIntent.putExtra(Constants.DIR_NAME, dirName)
+//        mSharedData.selectedModeSenderIntent.setClass(this, SendSelectedItemService::class.java)
+//        startService(mSharedData.selectedModeSenderIntent)
+
+        mSharedData.selectedModeProgressServiceIntent.putExtra(Constants.MODE, Constants.MODE_SELECT) //선택모드
+//        mSharedData.selectedModeProgressServiceIntent.setClass(this, ProgressNotificationService::class.java)
+//        startService(mSharedData.selectedModeProgressServiceIntent)
+
+        mProgressIntent = Intent()
+        mProgressIntent.putExtra(Constants.MODE, Constants.MODE_SELECT) //선택모드
+//        mProgressIntent.setClass(this, ProgressActivity::class.java)
+//        startActivity(mProgressIntent)
+    }
+
     private fun findFileInfo(): Int {
         // Select 하고자 하는 컬럼
         val imageProjection =
@@ -191,6 +223,13 @@ class SendSelectedItemActivity : AppCompatActivity(), AdapterView.OnItemClickLis
         return (mAllImageList.size + mAllVideoList.size)
     }
 
+    private fun updateUi() {
+        mImageAdapter = ImageAdapter(this, R.layout.gridview_item, mAllImageList)
+        GridImageList.adapter = mImageAdapter
+        mVideoAdapter = ImageAdapter(this, R.layout.gridview_item, mAllVideoList)
+        GridVideoList.adapter = mVideoAdapter
+    }
+
     // 사진 정보 불러오기
     private inner class FindImageList : AsyncTask<Int, Int, Int>() {
         override fun onPreExecute() {
@@ -209,11 +248,4 @@ class SendSelectedItemActivity : AppCompatActivity(), AdapterView.OnItemClickLis
             mProgressDialog.dismiss()
         }
     }
-    private fun updateUi() {
-        mImageAdapter = ImageAdapter(this, R.layout.gridview_item, mAllImageList)
-        GridImageList.adapter = mImageAdapter
-        mVideoAdapter = ImageAdapter(this, R.layout.gridview_item, mAllVideoList)
-        GridVideoList.adapter = mVideoAdapter
-    }
-
 }
