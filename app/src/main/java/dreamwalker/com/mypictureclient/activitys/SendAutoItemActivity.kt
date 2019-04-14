@@ -20,7 +20,6 @@ class SendAutoItemActivity : AppCompatActivity() {
     private val PERMISSION_CODE = 1000
 
     private var mSharedData = SharedData.instance
-
     private lateinit var mProgressIntent: Intent
     private lateinit var mLastDate: String
     private lateinit var mServerIP: String
@@ -79,6 +78,7 @@ class SendAutoItemActivity : AppCompatActivity() {
         mLastDate = intent.getStringExtra(Constants.DATE)
         getImageInfo()
         getVideoInfo()
+        setAlertDialog()
     }
 
     private fun getImageInfo() {
@@ -130,6 +130,22 @@ class SendAutoItemActivity : AppCompatActivity() {
 
     private fun isValidDate(lastDate: String, date: String): Boolean {
         return lastDate.compareTo(date) <= 0
+    }
+
+
+    private fun setAlertDialog() {
+        val alert = android.app.AlertDialog.Builder(this)
+        if (!mIsNewFile) {
+            alert.setTitle("알림")
+            alert.setMessage("새로 찍은 사진이나 동영상이 없습니다.")
+            alert.setPositiveButton(
+                "확인"
+            ) { dialog, whichButton -> finish() }
+            alert.show()
+        } else {
+            startSendService()
+            finish()
+        }
     }
 
     private fun startSendService(){
