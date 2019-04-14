@@ -20,6 +20,7 @@ import dreamwalker.com.mypictureclient.SharedData
 import dreamwalker.com.mypictureclient.adapter.ImageAdapter
 import dreamwalker.com.mypictureclient.app_const.Constants
 import dreamwalker.com.mypictureclient.model.SelectedImageData
+import dreamwalker.com.mypictureclient.services.SendSelectedItemService
 import kotlinx.android.synthetic.main.activity_send_selected_item.*
 import java.util.ArrayList
 
@@ -154,17 +155,17 @@ class SendSelectedItemActivity : AppCompatActivity(), AdapterView.OnItemClickLis
     private fun startSendService(dirName: String, serverIp: String) {
         mSharedData.selectedModeSenderIntent.putExtra(Constants.SERVER_IP, serverIp)
         mSharedData.selectedModeSenderIntent.putExtra(Constants.DIR_NAME, dirName)
-//        mSharedData.selectedModeSenderIntent.setClass(this, SendSelectedItemService::class.java)
-//        startService(mSharedData.selectedModeSenderIntent)
+        mSharedData.selectedModeSenderIntent.setClass(this, SendSelectedItemService::class.java)
+        startService(mSharedData.selectedModeSenderIntent)
 
-        mSharedData.selectedModeProgressServiceIntent.putExtra(Constants.MODE, Constants.MODE_SELECT) //선택모드
+//        mSharedData.selectedModeProgressServiceIntent.putExtra(Constants.MODE, Constants.MODE_SELECT) //선택모드
 //        mSharedData.selectedModeProgressServiceIntent.setClass(this, ProgressNotificationService::class.java)
 //        startService(mSharedData.selectedModeProgressServiceIntent)
 
         mProgressIntent = Intent()
         mProgressIntent.putExtra(Constants.MODE, Constants.MODE_SELECT) //선택모드
-//        mProgressIntent.setClass(this, ProgressActivity::class.java)
-//        startActivity(mProgressIntent)
+        mProgressIntent.setClass(this, ProgressActivity::class.java)
+        startActivity(mProgressIntent)
     }
 
     private fun findFileInfo(): Int {

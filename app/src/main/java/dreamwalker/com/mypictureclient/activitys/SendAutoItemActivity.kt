@@ -154,5 +154,11 @@ class SendAutoItemActivity : AppCompatActivity() {
         mSharedData.allModeSenderIntent.putExtra(Constants.SERVER_IP, mServerIP)
         mSharedData.allModeSenderIntent.setClass(this, SendAutoItemService::class.java)
         startService(mSharedData.allModeSenderIntent)
+
+
+        mProgressIntent = Intent()
+        mProgressIntent.putExtra(Constants.MODE, Constants.MODE_ALL) //전체모드
+        mProgressIntent.setClass(this, ProgressActivity::class.java)
+        startActivity(mProgressIntent)
     }
 }
