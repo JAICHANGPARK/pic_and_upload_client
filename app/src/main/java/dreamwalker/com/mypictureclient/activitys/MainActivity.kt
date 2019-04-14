@@ -221,8 +221,8 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         val intent = Intent()
                         intent.putExtra(Constants.IP, mServerIP)
-//                        intent.setClass(applicationContext, SendSelectedItemActivity::class.java)
-//                        startActivity(intent)
+                        intent.setClass(applicationContext, SendSelectedItemActivity::class.java)
+                        startActivity(intent)
                     }
                 }
             })
