@@ -1,6 +1,7 @@
 package dreamwalker.com.mypictureclient
 
 import android.content.Intent
+import dreamwalker.com.mypictureclient.model.SelectedImageData
 import java.util.ArrayList
 
 class SharedData {
@@ -18,7 +19,7 @@ class SharedData {
     var selectedModeFileCount: Int = 0
     var selectedModeTotalFileCount: Int = 0
 
-//    var selectedImageList = ArrayList<SelectedImageData>()
+    var selectedImageList = ArrayList<SelectedImageData>()
 
     companion object {
         val instance = SharedData()
